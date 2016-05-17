@@ -116,11 +116,6 @@ suite('component test with har files', function () {
 				.send()
 				.expectStatus(200)
 				.expectValue("success", true)
-				.expect(function(req, body, next) {
-					setTimeout(function() {
-						next();
-					}, 5000);
-				})
 				.expect(function(res, body, next) {
 					assert.notEqual(oldSignature, body.signature);
 					next();
