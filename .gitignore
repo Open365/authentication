@@ -1,0 +1,10 @@
+.idea
+node_modules/
+build/
+builder/contents/
+src/authentication-installed*
+*.log
+/commit.properties
+.*.swp
+.swp
+/pkgs

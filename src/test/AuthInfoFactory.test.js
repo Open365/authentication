@@ -1,0 +1,50 @@
+/*
+    Copyright (c) 2016 eyeOS
+
+    This file is part of Open365.
+
+    Open365 is free software: you can redistribute it and/or modify
+    it under the terms of the GNU Affero General Public License as
+    published by the Free Software Foundation, either version 3 of the
+    License, or (at your option) any later version.
+
+    This program is distributed in the hope that it will be useful,
+    but WITHOUT ANY WARRANTY; without even the implied warranty of
+    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+    GNU Affero General Public License for more details.
+
+    You should have received a copy of the GNU Affero General Public License
+    along with this program. If not, see <http://www.gnu.org/licenses/>.
+*/
+
+var sinon = require('sinon');
+var assert = require('chai').assert;
+var authInfoFactory = require('../lib/login/authinfo/AuthInfoFactory');
+
+suite('AuthInfoFactory', function () {
+	var sut;
+	var args = {
+		type: 'Dummy',
+		username: 'username',
+		amIDummy: true
+	};
+	setup(function () {
+		sut = authInfoFactory;
+	});
+
+	suite('getAuthInfo', function () {
+		test('should return a DummyAuth with amIDummy to true', function () {
+			var authInfo = sut.getAuthInfo(args);
+			assert.equal(authInfo.getAmIDummy(), true);
+		});
+		test('should return a DummyAuth with amIDummy to false', function () {
+			args.amIDummy = false;
+			var authInfo = sut.getAuthInfo(args);
+			assert.equal(authInfo.getAmIDummy(), false);
+		});
+		test('should throw an exception when no authInfo class is found', function () {
+			args.amIDummy = "not existing AuthInfo";
+			assert.throws(sut.getAuthInfo, Error);
+		});
+	});
+});

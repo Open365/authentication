@@ -1,0 +1,19 @@
+name: "Example plan"
+scenarios:
+ - simpleFuck:
+    containers:
+        - authentication: 0
+ - scaleFuck:
+    containers:
+        - authentication: 5
+ - noStaticCache:
+    containers:
+        - staticCache: 0
+ - noLdap:
+    containers:
+        - ldap: 0
+ - alloff:
+    containers:
+        - authentication: 0
+        - staticCache: 0
+        - ldap: 0
