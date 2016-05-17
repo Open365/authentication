@@ -88,7 +88,7 @@ suite('component test with har files', function () {
 		}
 
 		setup(function (done) {
-			hippie4Eyeos.login(done);
+			hippie4Eyeos.login(done, 'eyeos', 'eyeos');
 		});
 
 		test('should return status 200', function (done) {
@@ -106,7 +106,7 @@ suite('component test with har files', function () {
 		}
 
 		setup(function (done) {
-			hippie4Eyeos.login(done);
+			hippie4Eyeos.login(done, 'eyeos', 'eyeos');
 		});
 
 		test('should return status 200', function (done) {
