@@ -35,7 +35,7 @@ SendCardToUser.prototype.signed = function(card, signature) {
 
     var notification = new userNotification.Notification(NEW_CARD_AVAILABLE, data);
 
-    this.notificationController.notifyUser(notification, card.username, useUserExchange);
+    this.notificationController.notifyUser(notification, card.username + '@' + card.domain, useUserExchange);
 
 	this.restUtilsReply.end(JSON.stringify({
         type: NEW_CARD_AVAILABLE,
