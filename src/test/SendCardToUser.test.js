@@ -27,6 +27,7 @@ suite('SendCardToUser', function() {
     var memberId = 'dani.ametller';
     var aSignature = 'a-signature-fake';
     var cardFake;
+    var domain = 'open365.io';
     var notificationControllerFake;
 
     setup(function () {
@@ -36,7 +37,8 @@ suite('SendCardToUser', function() {
         };
 
         cardFake = {
-            username: memberId
+            username: memberId,
+            domain: domain
         };
 
         notificationControllerFake = {
@@ -67,7 +69,7 @@ suite('SendCardToUser', function() {
             sut.signed(cardFake, aSignature);
 
             sinon.assert.calledOnce(notificationControllerFake.notifyUser);
-            sinon.assert.calledWithExactly(notificationControllerFake.notifyUser, sinon.match.object, memberId, useUserExchange);
+            sinon.assert.calledWithExactly(notificationControllerFake.notifyUser, sinon.match.object, memberId + '@' + domain, useUserExchange);
         });
 
         test('should notify user owning the card with expected data format', function () {
