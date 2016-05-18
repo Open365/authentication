@@ -112,22 +112,25 @@ suite('component test with har files', function () {
 		test('should return status 200', function (done) {
 			var oldCard = hippie4Eyeos.getCard();
 			var oldSignature = hippie4Eyeos.getSignature();
-			renewCardPostRequest()
-				.send()
-				.expectStatus(200)
-				.expectValue("success", true)
-				.expect(function(res, body, next) {
-					assert.notEqual(oldSignature, body.signature);
-					next();
-				})
-				.expect(function(res, body, next) {
-					assert.notDeepEqual(oldCard, body.card);
-					next();
-				})
-				.end(function(err, res, body) {
-					console.log("body: ", body);
-					done();
-				});
+			setTimeout(function() {
+				//we wait in order to have different expiration times and generate a new card
+				renewCardPostRequest()
+					.send()
+					.expectStatus(200)
+					.expectValue("success", true)
+					.expect(function(res, body, next) {
+						assert.notEqual(oldSignature, body.signature);
+						next();
+					})
+					.expect(function(res, body, next) {
+						assert.notDeepEqual(oldCard, body.card);
+						next();
+					})
+					.end(function(err, res, body) {
+						console.log("body: ", body);
+						done();
+					});
+			}, 1500);
 		});
 	});
 
