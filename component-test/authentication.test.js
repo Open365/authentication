@@ -128,7 +128,7 @@ suite('component test with har files', function () {
 					})
 					.end(function(err, res, body) {
 						console.log("body: ", body);
-						done();
+						done(err);
 					});
 			}, 1500);
 		});
