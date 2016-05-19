@@ -17,7 +17,7 @@
     along with this program. If not, see <http://www.gnu.org/licenses/>.
 */
 
-var ExtraController = require('eyeos-extra').Controller;
+var ExtraController = require('eyeos-extras').Controller;
 var PrincipalProviderV2 = require('eyeos-principal').PrincipalProvider;
 var ExtraKProvider = require('./ExtraKProvider');
 var global_settings = require('../settings.js');
