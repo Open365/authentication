@@ -40,7 +40,7 @@ ForgotPassword.prototype.postForgot = function(req, res) {
     }
 
     if (typeof userData.lang === 'undefined') {
-        res.status(403).json({error: 1, msg: "Invalid or missing language"}).end();
+        res.status(403).json({error: 5, msg: "Invalid or missing language"}).end();
         return;
     }
 
