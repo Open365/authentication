@@ -24,7 +24,7 @@
     "eyeos-principal": "*",
     "eyeos-amqp": "*",
     "eyeos-usernotification": "*",
-    "eyeos-extra": "*",
+    "eyeos-extras": "*",
     "png-stash": "~1.0.1",
     "eyeos-hooks": "*"
   },
