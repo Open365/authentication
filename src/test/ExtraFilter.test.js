@@ -21,7 +21,7 @@ var sinon = require('sinon');
 var assert = require('chai').assert;
 var PrincipalProvider = require('eyeos-principal').PrincipalProvider;
 var ExtraFilter = require('../lib/login/ExtraFilter');
-var ExtraController = require('eyeos-extra').Controller;
+var ExtraController = require('eyeos-extras').Controller;
 
 
 suite('ExtraFilter', function(){
