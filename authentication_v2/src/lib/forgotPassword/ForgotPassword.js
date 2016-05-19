@@ -31,10 +31,16 @@ ForgotPassword.prototype.postForgot = function(req, res) {
     var responseOkMessage = "We've sent an email with the instructions for recover your password";
 
     userData.username = req.body.username;
+    userData.lang = req.body.lang;
     userData.domain = getDomain(userData.username);
 
     if (typeof userData.username === 'undefined' || userData.domain === null) {
         res.status(403).json({error: 1, msg: "Invalid or missing username"}).end();
+        return;
+    }
+
+    if (typeof userData.lang === 'undefined') {
+        res.status(403).json({error: 1, msg: "Invalid or missing language"}).end();
         return;
     }
 

@@ -45,7 +45,7 @@ EmailProvider.prototype.sendForgotPasswordMail = function(data, cb) {
         to: data.personal_email,
         subject: 'Reset your password on ' + data.domain
     };
-    mailOptions.html = fs.readFileSync(template_dir + 'forgot_password.html').toString('utf8');
+    mailOptions.html = fs.readFileSync(template_dir + 'forgot_password_' + data.lang + '.html').toString('utf8');
     mailOptions.html = mailOptions.html.replace('%DOMAIN%', data.domain);
     mailOptions.html = mailOptions.html.replace('%HOST%', data.domain);
     mailOptions.html = mailOptions.html.replace('%USERNAME%', data.username);
