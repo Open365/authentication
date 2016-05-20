@@ -39,11 +39,12 @@ var Permissions = function(permissionsUpdater, eyeosAuth, sendCardToUser, rsaSig
 
 Permissions.prototype.changePermissions = function(restUtilsRequest, restUtilsReply, changeBindedMethod) {
     var principalId = restUtilsRequest.parameters.principals;
+    var domain = this.eyeosAuth.requestParser.getCard(restUtilsRequest).domain;
     var permissions = restUtilsRequest.document.permissions;
 
     var self = this;
     changeBindedMethod(principalId, permissions, function() {
-        self.eyeosAuth.signCard(principalId, new SendCardToUser(restUtilsReply));
+        self.eyeosAuth.signCard(principalId, domain, new SendCardToUser(restUtilsReply));
     });
 };
 
