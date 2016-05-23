@@ -30,7 +30,7 @@ var EmailProvider = function (customSettings, nodeMailer, errorHandler) {
 EmailProvider.prototype.sendForgotPasswordMail = function(data, cb) {
     var self = this;
     var template_dir = __dirname + '/../../../templates/forgotpassword/';
-    var noreplyUser = this.settings.emailProvider.noreplyAccount.username + '@' + data.domain;
+    var noreplyUser = this.settings.emailProvider.noreplyAccount.username + '@' + data.username.split('@')[1];
     var transporter = this.nodeMailer.createTransport({
         host: this.settings.emailProvider.host,
         port: this.settings.emailProvider.port,
