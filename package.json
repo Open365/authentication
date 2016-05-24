@@ -12,7 +12,7 @@
     "eyeos-crypt": "*",
     "eyeos-mongo": "*",
     "eyeos-service-ready-notify": "*",
-    "eyeos-service-bus": "~6.3.20",
+    "eyeos-service-bus": "*",
     "eyeos-stomp": "*",
     "ldapjs": "0.7.1",
     "mongoose": "~3.8.13",
