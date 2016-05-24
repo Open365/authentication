@@ -4,8 +4,6 @@ ENV WHATAMI authentication
 
 WORKDIR ${InstallationDir}
 
-RUN mkdir -p ${InstallationDir}/src/ && touch ${InstallationDir}/src/authentication-installed.js
-
 CMD eyeos-run-server --serf ${InstallationDir}/src/eyeos-authentication.js ${InstallationDir}/authentication_v2/src/eyeos-authentication_v2.js
 
 COPY . ${InstallationDir}
