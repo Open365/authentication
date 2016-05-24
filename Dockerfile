@@ -23,4 +23,4 @@ RUN apk update && apk add --no-cache curl make gcc g++ git python cairo pango \
     libxml2 libxml2-dev libgomp libintl gettext gettext-dev bzip2-dev libffi-dev glib glib-dev \
     libxext-dev cairo-gobject cairo-dev pcre git make libbz2 libffi gdbm ncurses-terminfo-base \
     ncurses-terminfo ncurses-libs readline sqlite-libs python && \
-    rm -r /etc/ssl /var/cache/apk/* /tmp/*
+    rm -fr /etc/ssl /var/cache/apk/* /tmp/*
