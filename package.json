@@ -17,7 +17,6 @@
     "ldapjs": "0.7.1",
     "mongoose": "~3.8.13",
     "request": "2.36.0",
-    "shelljs": "~0.3.0",
     "eyeos-consume-service": "*",
     "log2out": "*",
     "eyeos-principal": "*",
