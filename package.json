@@ -26,13 +26,14 @@
     "eyeos-usernotification": "*",
     "eyeos-extras": "*",
     "png-stash": "~1.0.1",
-    "eyeos-hooks": "*"
+    "eyeos-bustohttp": "*",
+    "express": "^4.12.2",
+    "body-parser": "1.14.1",
+    "nodemailer": "^2.3.2",
+    "node-uuid": "1.4.3"
   },
   "devDependencies": {
-    "body-parser": "1.14.1",
-    "express": "^4.12.2",
-    "eyeos-bustohttp": "*",
-    "nodemailer": "^2.3.2",
+    "eyeos-hooks": "*",
     "hippie": "^0.3.0",
     "eyeos-hippie": "*",
     "mocha": "1.20.0",
@@ -43,7 +44,6 @@
     "grunt-shell": "0.7.0",
     "grunt-mocha-test": "0.11.0",
     "istanbul": "0.2.11",
-    "node-uuid": "1.4.3",
     "eyeos-component-tests": "*",
     "eyeos-gruntfile": "*"
   },
