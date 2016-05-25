@@ -11,7 +11,7 @@ CMD eyeos-run-server --serf ${InstallationDir}/src/eyeos-authentication.js ${Ins
 COPY . ${InstallationDir}
 
 RUN apk update && apk add --no-cache curl make gcc g++ git python cairo pango bash \
-    libjpeg giflib ttf-liberation && \
+    libjpeg giflib ttf-liberation krb5-dev && \
     npm install --verbose --production && \
     npm cache clean && \
     apk del openssl ca-certificates libssh2 curl binutils-libs binutils gmp isl \
@@ -22,5 +22,5 @@ RUN apk update && apk add --no-cache curl make gcc g++ git python cairo pango ba
     pixman-dev xcb-util xcb-util-dev perl libbz2 libffi gdbm sqlite-libs python ncurses-dev \
     libxml2 libxml2-dev libgomp libintl gettext gettext-dev bzip2-dev libffi-dev glib glib-dev \
     libxext-dev cairo-gobject cairo-dev pcre git make libbz2 libffi gdbm ncurses-terminfo-base \
-    ncurses-terminfo ncurses-libs readline sqlite-libs python bash && \
+    ncurses-terminfo ncurses-libs readline sqlite-libs python bash krb5-dev && \
     rm -fr /etc/ssl /var/cache/apk/* /tmp/*
