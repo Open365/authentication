@@ -11,10 +11,8 @@ CMD eyeos-run-server --serf ${InstallationDir}/src/eyeos-authentication.js ${Ins
 COPY . ${InstallationDir}
 
 RUN apk update && \
-    /scripts-base/installExtraBuild.sh && \
-    apk add --no-cache cairo pango libjpeg jpeg-dev giflib giflib-dev ttf-liberation krb5-dev cairo-dev && \
+    /scripts-base/installExtraBuild.sh cairo pango libjpeg jpeg-dev giflib giflib-dev ttf-liberation krb5-dev cairo-dev && \
     npm install --verbose --production && \
     npm cache clean && \
-    /scripts-base/deleteExtraBuild.sh && \
-    apk del jpeg-dev giflib-dev krb5-dev cairo-dev && \
+    /scripts-base/deleteExtraBuild.sh jpeg-dev giflib-dev krb5-dev cairo-dev && \
     rm -fr /etc/ssl /var/cache/apk/* /tmp/*
