@@ -1,5 +1,5 @@
-# Install packages to images docker
+# Install packages to images docker, "common" is declared into dependencies-extra of alpine6-node-base.
 add="$common cairo pango libjpeg jpeg-dev giflib giflib-dev ttf-liberation krb5-dev cairo-dev"
 
-# Delete packages to images docker
+# Delete packages to images docker, "common" is declared into dependencies-extra of alpine6-node-base.
 del="$common jpeg-dev giflib-dev krb5-dev cairo-dev"
