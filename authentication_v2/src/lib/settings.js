@@ -62,7 +62,12 @@ var settings = {
 	},
 	password: {
 		minLength: 8
-	}
+	},
+	supportedLanguages: [
+		'en',
+		'es',
+		'it'
+	]
 };
 
 module.exports = settings;

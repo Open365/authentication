@@ -30,7 +30,7 @@ var EmailProvider = function (customSettings, nodeMailer, errorHandler) {
 EmailProvider.prototype.sendForgotPasswordMail = function(data, cb) {
     var self = this;
     var template_dir = __dirname + '/../../../templates/forgotpassword/';
-    var noreplyUser = this.settings.emailProvider.noreplyAccount.username + '@' + data.domain;
+    var noreplyUser = this.settings.emailProvider.noreplyAccount.username + '@' + data.username.split('@')[1];
     var transporter = this.nodeMailer.createTransport({
         host: this.settings.emailProvider.host,
         port: this.settings.emailProvider.port,
@@ -45,7 +45,7 @@ EmailProvider.prototype.sendForgotPasswordMail = function(data, cb) {
         to: data.personal_email,
         subject: 'Reset your password on ' + data.domain
     };
-    mailOptions.html = fs.readFileSync(template_dir + 'forgot_password.html').toString('utf8');
+    mailOptions.html = fs.readFileSync(template_dir + 'forgot_password_' + data.lang + '.html').toString('utf8');
     mailOptions.html = mailOptions.html.replace('%DOMAIN%', data.domain);
     mailOptions.html = mailOptions.html.replace('%HOST%', data.domain);
     mailOptions.html = mailOptions.html.replace('%USERNAME%', data.username);

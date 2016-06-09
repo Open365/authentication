@@ -34,6 +34,8 @@ suite('Permissions', function(){
 	var expAddPermissions;
 
 	var principalId = 'foo.user';
+	var domain = "domain";
+	var card = {"domain":domain};
 	var permissions = ["foo.bar", "some.stuff"];
 	var restUtilsRequest = {
 		parameters: {
@@ -41,6 +43,9 @@ suite('Permissions', function(){
 		},
 		document: {
 			permissions: permissions
+		},
+		headers: {
+			'Card': JSON.stringify(card),
 		}
 	};
 	var permissionsUpdaterUpdateSpyCallback,
@@ -49,7 +54,7 @@ suite('Permissions', function(){
 	setup(function(){
 		eyeosAuth = new EyeosAuth();
 		eyeosAuthMock = sinon.mock(eyeosAuth);
-		expSignCard = eyeosAuthMock.expects('signCard').once().withExactArgs(principalId, sinon.match.object);
+		expSignCard = eyeosAuthMock.expects('signCard').once().withExactArgs(principalId, domain, sinon.match.object);
 
 		permissionsUpdater = new PermissionsUpdater();
 

@@ -37,8 +37,8 @@ ExpressServer.prototype.start = function () {
 
     this.app.use(bodyParser.json());
     var forgotPassword = new ForgotPassword(this.settings);
-    this.app.post(this.settings.httpServer.path + 'forgot', forgotPassword.postForgot);
-    this.app.post(this.settings.httpServer.path + 'recover', forgotPassword.postRecover);
+    this.app.post(this.settings.httpServer.path + 'forgot', forgotPassword.postForgot.bind(forgotPassword));
+    this.app.post(this.settings.httpServer.path + 'recover', forgotPassword.postRecover.bind(forgotPassword));
     this.httpServer = this.app.listen(this.settings.httpServer.port);
     this.started = true;
 };

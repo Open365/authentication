@@ -31,10 +31,21 @@ ForgotPassword.prototype.postForgot = function(req, res) {
     var responseOkMessage = "We've sent an email with the instructions for recover your password";
 
     userData.username = req.body.username;
-    userData.domain = getDomain(userData.username);
+    userData.lang = req.body.lang;
+    userData.domain = req.body.domain;
 
-    if (typeof userData.username === 'undefined' || userData.domain === null) {
+    if (typeof userData.username === 'undefined' || !checkUsername(userData.username)) {
         res.status(403).json({error: 1, msg: "Invalid or missing username"}).end();
+        return;
+    }
+
+    if (typeof userData.lang === 'undefined' || this.settings.supportedLanguages.indexOf(userData.lang) === -1) {
+        res.status(403).json({error: 5, msg: "Invalid or missing language"}).end();
+        return;
+    }
+
+    if (typeof userData.domain === 'undefined' || !checkDomain(userData.domain)) {
+        res.status(403).json({error: 6, msg: "Invalid or missing url domain name"}).end();
         return;
     }
 
@@ -54,9 +65,8 @@ ForgotPassword.prototype.postRecover = function(req, res) {
     userData.username = req.body.username;
     userData.password = req.body.password;
     userData.token = req.body.token;
-    userData.domain = getDomain(userData.username);
 
-    if (typeof userData.username === 'undefined' || userData.domain === null) {
+    if (typeof userData.username === 'undefined' || !checkUsername(userData.username)) {
         res.status(403).json({error: 1, msg: "Invalid or missing username"}).end();
         return;
     }
@@ -78,12 +88,12 @@ ForgotPassword.prototype.postRecover = function(req, res) {
     });
 };
 
-var getDomain = function(username) {
-    var domain = null;
-    if(/^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/.test(username)) {
-        domain = username.split('@')[1];
-    }
-    return domain;
+var checkUsername = function(username) {
+    return /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/.test(username);
+};
+
+var checkDomain = function(domain) {
+    return /[a-zA-Z0-9][a-zA-Z0-9-]{1,61}[a-zA-Z0-9](?:\.[a-zA-Z]{2,})+/.test(domain);
 };
 
 module.exports = ForgotPassword;
