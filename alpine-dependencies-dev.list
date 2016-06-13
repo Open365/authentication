@@ -1,5 +1,5 @@
-# Install packages to images docker, "common" is declared into dependencies-extra of alpine6-node-base.
-add="$common jpeg-dev giflib-dev krb5-dev cairo-dev"
+# Install packages to images docker, "common" is declared into dependencies.list of alpine6-node-base.
+add_dev=""
 
-# Delete packages to images docker, "common" is declared into dependencies-extra of alpine6-node-base.
-del="$common jpeg-dev giflib-dev krb5-dev cairo-dev"
+# Delete packages to images docker, "common" is declared into dependencies.list of alpine6-node-base.
+del_dev=""
